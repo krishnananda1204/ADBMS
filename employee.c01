@@ -1,0 +1,603 @@
+1) Create an employee  table ‘EMP’ with following fields :
+
+
+empno               	  NUMBER(2)
+
+ename                	  VARCHAR2(25)
+
+job                   	   VARCHAR2(12)
+
+salary                	   NUMBER(10,2)
+
+commission              NUMBER(7,2)
+
+deptno             	   NUMBER(2)
+
+
+create table EMP(empno number(10),ename varchar(25),job varchar(12),salary number(10,2), commission number(7,2),deptno number(2));
+
+2) Display the structure of ‘EMP’
+
+desc EMP;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(10)
+ ENAME                                              VARCHAR2(25)
+ JOB                                                VARCHAR2(12)
+ SALARY                                             NUMBER(10,2)
+ COMMISSION                                         NUMBER(7,2)
+ DEPTNO                                             NUMBER(2)
+
+3)Insert the following record into ‘EMP’
+
+     EMPNO      ENAME      JOB                    SAL       COMM         DEPTNO
+
+7369         SMITH           CLERK           2000             800                    20
+
+
+insert into EMP(empno,ename,job,salary,commission,deptno)values(7369,'SMITH','CLERK',2000,800,20);
+
+ select * from EMP;
+
+     EMPNO ENAME      JOB            SALARY COMMISSION     DEPTNO
+---------- ---------- ---------- ---------- ---------- ----------
+      7369 SMITH      CLERK            2000        800         20
+
+4)Insert the rest of records using substitution variable.
+
+
+EMPNO ENAME      JOB                     SAL         COMM     DEPTNO
+
+7499 ALLEN      SALESMAN        1600       300          30
+
+7521 WARD       SALESMAN        1250       500         30
+
+7566 JONES      MANAGER         2975            20
+
+7654 MARTIN     SALESMAN        1250         1400        30
+
+7698 BLAKE      MANAGER         2850                   30
+
+7782 CLARK      MANAGER         2450                     10
+
+7788 SCOTT      ANALYST         3000                   20
+
+7839 KING       PRESIDENT       5000                   10
+
+7844 TURNER     SALESMAN        1500                   30
+
+7876 ADAMS      CLERK           1100                   20
+
+7900 JAMES      NULL           950                    30
+
+7902  FORD     ANALYST         3000                   20
+
+7934 MILLER     CLERK           1300                   10
+
+
+
+
+ insert into EMP(empno,ename,job,salary,commission,deptno)values(7499,' ALLEN'  ,   ' SALESMAN' ,       1600 ,      300 ,         30);
+insert into EMP(empno,ename,job,salary,commission,deptno)values(7521, 'WARD'      , 'SALESMAN'  , 1250  ,  500  , 30);
+ insert into EMP(empno,ename,job,salary,commission,deptno)values(7566, 'JONES'   , 'MANAGER'       ,  2975  ,0,  20);
+ insert into EMP(empno,ename,job,salary,commission,deptno)values(7654, 'MARTIN'   ,  'SALESMAN'     ,   1250       ,  1400      ,  30);
+insert into EMP(empno,ename,job,salary,commission,deptno)values(7698, 'BLAKE'     , 'MANAGER'      ,   2850             ,   0  , 30);
+insert into EMP(empno,ename,job,salary,commission,deptno)values(7782, 'CLARK'    ,  'MANAGER'      ,   2450                ,  0  , 10);
+ insert into EMP(empno,ename,job,salary,commission,deptno)values(7788, 'SCOTT'    , 'ANALYST'      ,   3000            ,    0  , 20);
+ insert into EMP(empno,ename,job,salary,commission,deptno)values(7839, 'KING'  ,     'PRESIDENT'     ,  5000          ,   0     , 10);
+ insert into EMP(empno,ename,job,salary,commission,deptno)values(7844, 'TURNER' ,    'SALESMAN'    ,    1500               ,  0 , 30);
+insert into EMP(empno,ename,job,salary,commission,deptno)values(7876, 'ADAMS'   ,   'CLERK'      ,     1100    ,         0   ,   20);
+ insert into EMP(empno,ename,job,salary,commission,deptno)values(7900, 'JAMES'   ,   'NULL'         ,  950               ,   0  ,30);
+ insert into EMP(empno,ename,job,salary,commission,deptno)values(7902,'FORD'   ,  'ANALYST'      ,   3000           ,    0   , 20);
+ insert into EMP(empno,ename,job,salary,commission,deptno)values(7934, 'MILLER'   ,  'CLERK'       ,    1300            ,  0    , 10);
+
+
+select * from EMP;
+
+     EMPNO ENAME      JOB            SALARY COMMISSION     DEPTNO
+---------- ---------- ---------- ---------- ---------- ----------
+      7369 SMITH      CLERK            2000        800         20
+      7499  ALLEN      SALESMAN        1600        300         30
+      7521 WARD       SALESMAN         1250        500         30
+      7566 JONES      MANAGER          2975          0         20
+      7654 MARTIN     SALESMAN         1250       1400         30
+      7698 BLAKE      MANAGER          2850          0         30
+      7782 CLARK      MANAGER          2450          0         10
+      7788 SCOTT      ANALYST          3000          0         20
+      7839 KING       PRESIDENT        5000          0         10
+      7844 TURNER     SALESMAN         1500          0         30
+      7876 ADAMS      CLERK            1100          0         20
+
+     EMPNO ENAME      JOB            SALARY COMMISSION     DEPTNO
+---------- ---------- ---------- ---------- ---------- ----------
+      7900 JAMES      NULL              950          0         30
+      7902 FORD       ANALYST          3000          0         20
+      7934 MILLER     CLERK            1300          0         10
+
+14 rows selected.
+
+
+5) Insert job  as ‘CLERK’ for all ‘NULL’ job types.
+
+update EMP set job='CLERK' where job='NULL';
+1 row updated.
+
+SQL> select * from EMP;
+
+     EMPNO ENAME      JOB            SALARY COMMISSION     DEPTNO
+---------- ---------- ---------- ---------- ---------- ----------
+      7369 SMITH      CLERK            2000        800         20
+      7499  ALLEN      SALESMAN        1600        300         30
+      7521 WARD       SALESMAN         1250        500         30
+      7566 JONES      MANAGER          2975          0         20
+      7654 MARTIN     SALESMAN         1250       1400         30
+      7698 BLAKE      MANAGER          2850          0         30
+      7782 CLARK      MANAGER          2450          0         10
+      7788 SCOTT      ANALYST          3000          0         20
+      7839 KING       PRESIDENT        5000          0         10
+      7844 TURNER     SALESMAN         1500          0         30
+      7876 ADAMS      CLERK            1100          0         20
+
+     EMPNO ENAME      JOB            SALARY COMMISSION     DEPTNO
+---------- ---------- ---------- ---------- ---------- ----------
+      7900 JAMES      CLERK             950          0         30
+      7902 FORD       ANALYST          3000          0         20
+      7934 MILLER     CLERK            1300          0         10
+
+14 rows selected.
+
+6) Add a new field  ‘date_join’ with following values
+
+
+date_join
+
+17-DEC-80
+
+20-FEB-81
+
+22-FEB-81
+
+02-APR-81
+
+28-SEP-81
+
+01-MAY-81
+
+09-JUN-81
+
+19-APR-87
+
+17-NOV-81
+
+08-SEP-81
+
+23-MAY-87
+
+03-DEC-81
+
+03-DEC-81
+
+23-JAN-82
+
+
+
+
+
+alter table emp add date_join date;
+
+Table altered.
+
+SQL> desc EMP;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(10)
+ ENAME                                              VARCHAR2(10)
+ JOB                                                VARCHAR2(10)
+ SALARY                                             NUMBER(10,2)
+ COMMISSION                                         NUMBER(7,2)
+ DEPTNO                                             NUMBER(2)
+ DATE_JOIN                                          DATE
+
+update EMP set date_join='17-DEC-80'where empno=7369;
+
+1 row updated.
+
+
+SQL> update EMP set date_join='20-FEB-81'where empno=7499;
+
+1 row updated.
+
+SQL> update EMP set date_join='22-FEB-81'where empno=7521;
+
+1 row updated.
+
+SQL> update EMP set date_join='02-APR-81'where empno=7566;
+
+1 row updated.
+
+SQL> update EMP set date_join='28-SEP-81'where empno=7654;
+
+1 row updated.
+
+SQL> update EMP set date_join='01-MAY-81'where empno=7698;
+
+1 row updated.
+
+SQL> update EMP set date_join='09-JUN-81'where empno=7782;
+
+1 row updated.
+
+SQL> update EMP set date_join='19-APR-87'where empno=7788;
+
+1 row updated.
+
+SQL> update EMP set date_join='17-NOV-81'where empno=7839;
+
+1 row updated.
+
+SQL> update EMP set date_join='08-SEP-81'where empno=7844;
+
+1 row updated.
+
+SQL> update EMP set date_join='23-MAY-87'where empno=7876;
+
+1 row updated.
+
+SQL> update EMP set date_join='03-DEC-81'where empno=7900;
+
+1 row updated.
+
+SQL> update EMP set date_join='03-DEC-81'where empno=7902;
+
+1 row updated.
+
+SQL> update EMP set date_join='23-JAN-82'where empno=7934;
+
+1 row updated.
+
+
+
+7 )Display details of all employees. 
+
+
+SQL> select * from EMP;
+
+     EMPNO ENAME      JOB            SALARY COMMISSION     DEPTNO DATE_JOIN
+---------- ---------- ---------- ---------- ---------- ---------- ---------
+      7369 SMITH      CLERK            2000        800         20 17-DEC-80
+      7499  ALLEN      SALESMAN        1600        300         30 20-FEB-81
+      7521 WARD       SALESMAN         1250        500         30 22-FEB-81
+      7566 JONES      MANAGER          2975          0         20 02-APR-81
+      7654 MARTIN     SALESMAN         1250       1400         30 28-SEP-81
+      7698 BLAKE      MANAGER          2850          0         30 01-MAY-81
+      7782 CLARK      MANAGER          2450          0         10 09-JUN-81
+      7788 SCOTT      ANALYST          3000          0         20 19-APR-87
+      7839 KING       PRESIDENT        5000          0         10 17-NOV-81
+      7844 TURNER     SALESMAN         1500          0         30 08-SEP-81
+      7876 ADAMS      CLERK            1100          0         20 23-MAY-87
+
+     EMPNO ENAME      JOB            SALARY COMMISSION     DEPTNO DATE_JOIN
+---------- ---------- ---------- ---------- ---------- ---------- ---------
+      7900 JAMES      CLERK             950          0         30 03-DEC-81
+      7902 FORD       ANALYST          3000          0         20 03-DEC-81
+      7934 MILLER     CLERK            1300          0         10 23-JAN-82
+
+14 rows selected.
+
+
+8 )Display all the distinct job types in ‘EMP’.
+
+
+select distinct job from EMP;
+
+JOB
+----------
+CLERK
+SALESMAN
+PRESIDENT
+MANAGER
+ANALYST
+
+9)Display names of all employees in dept 20 and 30
+
+select ename from EMP where deptno between 20 and 30;
+
+ENAME
+----------
+SMITH
+ ALLEN
+WARD
+JONES
+MARTIN
+BLAKE
+SCOTT
+TURNER
+ADAMS
+JAMES
+FORD
+
+11 rows selected.
+
+
+10) List name and Total of salary i.e sal+commission
+
+
+select ename,salary+commission as Total_Salary from emp;
+
+ENAME      Total_Salary 
+---------- -----------------
+SMITH                   2800
+ ALLEN                  1900
+WARD                    1750
+JONES                   2975
+MARTIN                  2650
+BLAKE                   2850
+CLARK                   2450
+SCOTT                   3000
+KING                    5000
+TURNER                  1500
+ADAMS                   1100
+
+ENAME       Total_Salary
+---------- -----------------
+JAMES                    950
+FORD                    3000
+MILLER                  1300
+
+14 rows selected.
+
+
+11) List name and Annual Salary i.e sal*12
+
+
+ select ename,salary*12 as anul_salary from EMP;
+
+ENAME      ANUL_SALARY
+---------- -----------
+SMITH            24000
+ ALLEN           19200
+WARD             15000
+JONES            35700
+MARTIN           15000
+BLAKE            34200
+CLARK            29400
+SCOTT            36000
+KING             60000
+TURNER           18000
+ADAMS            13200
+
+ENAME      ANUL_SALARY
+---------- -----------
+JAMES            11400
+FORD             36000
+MILLER           15600
+
+14 rows selected.
+
+12)List the employee who joined in the date ‘03-DEC-81’
+
+select ename from EMP where date_join='03-DEC-81';
+
+ENAME
+------
+JAMES
+FORD
+
+
+13)Display the total salary of ‘Miller’
+
+
+SQL> select salary+commission as Total_Salary from EMP where ename='MILLER';
+
+TOTAL_SALARY
+------------
+        1300
+
+14)Delete the employee ‘Miller’ from’EMP’
+
+
+SQL> delete from EMP where empno=7934;
+
+1 row deleted.
+
+SQL> select * from EMP;
+
+     EMPNO ENAME                     JOB              SALARY COMMISSION     DEPTNO DATE_JOIN
+---------- ------------------------- ------------ ---------- ---------- ---------- ---------
+      7369 SMITH                     CLERK              2000        800         20 17-DEC-80
+      7499  ALLEN                     SALESMAN          1600        300         30 20-FEB-81
+      7521 WARD                      SALESMAN           1250        500         30 22-FEB-81
+      7566 JONES                     MANAGER            2975          0         20 02-APR-81
+      7654 MARTIN                    SALESMAN           1250       1400         30 28-SEP-81
+      7698 BLAKE                     MANAGER            2850          0         30 01-MAY-81
+      7782 CLARK                     MANAGER            2450          0         10 09-JUN-81
+      7788 SCOTT                     ANALYST            3000          0         20 19-APR-87
+      7839 KING                      PRESIDENT          5000          0         10 17-NOV-81
+      7844 TURNER                    SALESMAN           1500          0         30 08-SEP-81
+      7876 ADAMS                     CLERK              1100          0         20 23-MAY-87
+
+     EMPNO ENAME                     JOB              SALARY COMMISSION     DEPTNO DATE_JOIN
+---------- ------------------------- ------------ ---------- ---------- ---------- ---------
+      7900 JAMES                     CLERK               950          0         30 03-DEC-81
+      7902 FORD                      ANALYST            3000          0         20 03-DEC-81
+
+13 rows selected.
+
+
+15)Display name and deptno of all employees.
+
+SQL> select ename,deptno from EMP;
+
+ENAME                         DEPTNO
+------------------------- ----------
+SMITH                             20
+ ALLEN                            30
+WARD                              30
+JONES                             20
+MARTIN                            30
+BLAKE                             30
+CLARK                             10
+SCOTT                             20
+KING                              10
+TURNER                            30
+ADAMS                             20
+
+ENAME                         DEPTNO
+------------------------- ----------
+JAMES                             30
+FORD                              20
+
+13 rows selected.
+
+
+16)Remove the field ‘commission’ fom’EMP’ after updating salary with total salary, i.e sal+commission
+
+ SQL> update EMP set salary=salary + commission;
+
+13 rows updated.
+
+SQL> alter table EMP drop column commission;
+
+Table altered.
+
+ALTER TABLE EMP RENAME COLUMN salary TO Total_Salary;
+
+Table altered.
+
+SQL> select * from EMP;
+
+     EMPNO ENAME                     JOB          TOTAL_SALARY     DEPTNO DATE_JOIN
+---------- ------------------------- ------------ ------------ ---------- ---------
+      7369 SMITH                     CLERK                2800         20 17-DEC-80
+      7499  ALLEN                     SALESMAN            1900         30 20-FEB-81
+      7521 WARD                      SALESMAN             1750         30 22-FEB-81
+      7566 JONES                     MANAGER              2975         20 02-APR-81
+      7654 MARTIN                    SALESMAN             2650         30 28-SEP-81
+      7698 BLAKE                     MANAGER              2850         30 01-MAY-81
+      7782 CLARK                     MANAGER              2450         10 09-JUN-81
+      7788 SCOTT                     ANALYST              3000         20 19-APR-87
+      7839 KING                      PRESIDENT            5000         10 17-NOV-81
+      7844 TURNER                    SALESMAN             1500         30 08-SEP-select
+      7876 ADAMS                     CLERK                1100         20 23-MAY-87
+
+     EMPNO ENAME                     JOB          TOTAL_SALARY     DEPTNO DATE_JOIN
+---------- ------------------------- ------------ ------------ ---------- ---------
+      7900 JAMES                     CLERK                 950         30 03-DEC-81
+      7902 FORD                      ANALYST              3000         20 03-DEC-81
+
+13 rows selected.
+
+17) Display the name of employees having the same amount of salary ( don’t use subqueries)
+
+SQL&gt; SELECT ENAME,SALARY FROM EMP WHERE SALARY IN
+(SELECT salary FROM EMP e WHERE EMP.EMPNO &lt; &gt; e.EMPNO);
+ 
+ENAME                         SALARY
+------------------------- ----------
+FORD                            3000
+SCOTT                           3000
+
+18)Display the name and employee no as ‘name’ and ‘emp_id’
+
+
+SQL> select ename as name,empno as emp_id from EMP;
+
+NAME                          EMP_ID
+------------------------- ----------
+SMITH                           7369
+ ALLEN                          7499
+WARD                            7521
+JONES                           7566
+MARTIN                          7654
+BLAKE                           7698
+CLARK                           7782
+SCOTT                           7788
+KING                            7839
+TURNER                          7844
+ADAMS                           7876
+
+NAME                          EMP_ID
+------------------------- ----------
+JAMES                           7900
+FORD                            7902
+
+13 rows selected.
+
+
+19)Rename table ‘EMP’ to ‘EMPLOYEE’
+
+
+SQL> alter table EMP rename to EMPLOYEE;
+
+Table altered.
+
+20)Create a new table ‘EMP_TAB’ from table ‘EMPLOYEE’
+
+create table EMP_TAB as select * from EMPLOYEE;
+Table created.
+
+21)List the details of ‘EMPLOYEE’ and ‘EMPTAB’
+
+SQL> select * from EMP_TAB;
+
+     EMPNO ENAME                     JOB          TOTAL_SALARY     DEPTNO DATE_JOIN
+---------- ------------------------- ------------ ------------ ---------- ---------
+      7369 SMITH                     CLERK                2800         20 17-DEC-80
+      7499  ALLEN                     SALESMAN            1900         30 20-FEB-81
+      7521 WARD                      SALESMAN             1750         30 22-FEB-81
+      7566 JONES                     MANAGER              2975         20 02-APR-81
+      7654 MARTIN                    SALESMAN             2650         30 28-SEP-81
+      7698 BLAKE                     MANAGER              2850         30 01-MAY-81
+      7782 CLARK                     MANAGER              2450         10 09-JUN-81
+      7788 SCOTT                     ANALYST              3000         20 19-APR-87
+      7839 KING                      PRESIDENT            5000         10 17-NOV-81
+      7844 TURNER                    SALESMAN             1500         30 08-SEP-81
+      7876 ADAMS                     CLERK                1100         20 23-MAY-87
+
+     EMPNO ENAME                     JOB          TOTAL_SALARY     DEPTNO DATE_JOIN
+---------- ------------------------- ------------ ------------ ---------- ---------
+      7900 JAMES                     CLERK                 950         30 03-DEC-81
+      7902 FORD                      ANALYST              3000         20 03-DEC-81
+
+13 rows selected.
+
+SQL> select * from EMPLOYEE;
+
+     EMPNO ENAME                     JOB          TOTAL_SALARY     DEPTNO DATE_JOIN
+---------- ------------------------- ------------ ------------ ---------- ---------
+      7369 SMITH                     CLERK                2800         20 17-DEC-80
+      7499  ALLEN                     SALESMAN            1900         30 20-FEB-81
+      7521 WARD                      SALESMAN             1750         30 22-FEB-81
+      7566 JONES                     MANAGER              2975         20 02-APR-81
+      7654 MARTIN                    SALESMAN             2650         30 28-SEP-81
+      7698 BLAKE                     MANAGER              2850         30 01-MAY-81
+      7782 CLARK                     MANAGER              2450         10 09-JUN-81
+      7788 SCOTT                     ANALYST              3000         20 19-APR-87
+      7839 KING                      PRESIDENT            5000         10 17-NOV-81
+      7844 TURNER                    SALESMAN             1500         30 08-SEP-81
+      7876 ADAMS                     CLERK                1100         20 23-MAY-87
+
+     EMPNO ENAME                     JOB          TOTAL_SALARY     DEPTNO DATE_JOIN
+---------- ------------------------- ------------ ------------ ---------- ---------
+      7900 JAMES                     CLERK                 950         30 03-DEC-81
+      7902 FORD                      ANALYST              3000         20 03-DEC-81
+
+13 rows selected.
+
+
+22)Delete all records from ‘EMP’
+
+SQL> delete from EMPLOYEE;
+
+13 rows deleted.
+
+
+
+23)Delete the table ‘EMP’
+
+SQL> drop table EMPLOYEE;
+
+Table dropped.
+
+
+
